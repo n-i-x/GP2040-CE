@@ -840,6 +840,30 @@ std::string setAddonOptions()
 	docToValue(addonOptions.TurboInputEnabled, doc, "TurboInputEnabled");
 	docToValue(addonOptions.WiiExtensionAddonEnabled, doc, "WiiExtensionAddonEnabled");
 
+	// I2CIOExpanderAddon
+	docToPin(addonOptions.i2cIOExpanderSDAPin, doc, "i2cIOExpanderSDAPin");
+	docToPin(addonOptions.i2cIOExpanderSCLPin, doc, "i2cIOExpanderSCLPin");
+	docToPin(addonOptions.i2cIOExpanderINTPin, doc, "i2cIOExpanderINTPin");
+	docToValue(addonOptions.i2cIOExpanderBlock, doc, "i2cIOExpanderBlock");
+	docToValue(addonOptions.i2cIOExpanderSpeed, doc, "i2cIOExpanderSpeed");
+	docToValue(addonOptions.i2cIOExpanderAddress, doc, "i2cIOExpanderAddress");
+	docToValue(addonOptions.i2cIOExpanderPorts[0], doc, "i2cIOExpanderPort01");
+	docToValue(addonOptions.i2cIOExpanderPorts[1], doc, "i2cIOExpanderPort02");
+	docToValue(addonOptions.i2cIOExpanderPorts[2], doc, "i2cIOExpanderPort03");
+	docToValue(addonOptions.i2cIOExpanderPorts[3], doc, "i2cIOExpanderPort04");
+	docToValue(addonOptions.i2cIOExpanderPorts[4], doc, "i2cIOExpanderPort05");
+	docToValue(addonOptions.i2cIOExpanderPorts[5], doc, "i2cIOExpanderPort06");
+	docToValue(addonOptions.i2cIOExpanderPorts[6], doc, "i2cIOExpanderPort07");
+	docToValue(addonOptions.i2cIOExpanderPorts[7], doc, "i2cIOExpanderPort10");
+	docToValue(addonOptions.i2cIOExpanderPorts[8], doc, "i2cIOExpanderPort11");
+	docToValue(addonOptions.i2cIOExpanderPorts[9], doc, "i2cIOExpanderPort12");
+	docToValue(addonOptions.i2cIOExpanderPorts[10], doc, "i2cIOExpanderPort13");
+	docToValue(addonOptions.i2cIOExpanderPorts[11], doc, "i2cIOExpanderPort14");
+	docToValue(addonOptions.i2cIOExpanderPorts[12], doc, "i2cIOExpanderPort15");
+	docToValue(addonOptions.i2cIOExpanderPorts[13], doc, "i2cIOExpanderPort16");
+	docToValue(addonOptions.i2cIOExpanderPorts[14], doc, "i2cIOExpanderPort17");
+	docToValue(addonOptions.i2cIOExpanderPorts[15], doc, "i2cIOExpanderPort18");
+
 	Storage::getInstance().setAddonOptions(addonOptions);
 
 	return serialize_json(doc);
@@ -1014,6 +1038,30 @@ std::string getAddonOptions()
 	writeDoc(doc, "ReverseInputEnabled", addonOptions.ReverseInputEnabled);
 	writeDoc(doc, "TurboInputEnabled", addonOptions.TurboInputEnabled);
 	writeDoc(doc, "WiiExtensionAddonEnabled", addonOptions.WiiExtensionAddonEnabled);
+
+	// I2CIOExtenderAddon
+	writeDoc(doc, "i2cIOExpanderSDAPin", addonOptions.i2cIOExpanderSDAPin == 0xFF ? -1 : addonOptions.i2cIOExpanderSDAPin);
+	writeDoc(doc, "i2cIOExpanderSCLPin", addonOptions.i2cIOExpanderSCLPin == 0xFF ? -1 : addonOptions.i2cIOExpanderSCLPin);
+	writeDoc(doc, "i2cIOExpanderINTPin", addonOptions.i2cIOExpanderINTPin == 0xFF ? -1 : addonOptions.i2cIOExpanderINTPin);
+	writeDoc(doc, "i2cIOExpanderBlock", addonOptions.i2cIOExpanderBlock);
+	writeDoc(doc, "i2cIOExpanderSpeed", addonOptions.i2cIOExpanderSpeed);
+	writeDoc(doc, "i2cIOExpanderAddress", addonOptions.i2cIOExpanderAddress);
+	writeDoc(doc, "i2cIOExpanderPort01", addonOptions.i2cIOExpanderPorts[0]);
+	writeDoc(doc, "i2cIOExpanderPort02", addonOptions.i2cIOExpanderPorts[1]);
+	writeDoc(doc, "i2cIOExpanderPort03", addonOptions.i2cIOExpanderPorts[2]);
+	writeDoc(doc, "i2cIOExpanderPort04", addonOptions.i2cIOExpanderPorts[3]);
+	writeDoc(doc, "i2cIOExpanderPort05", addonOptions.i2cIOExpanderPorts[4]);
+	writeDoc(doc, "i2cIOExpanderPort06", addonOptions.i2cIOExpanderPorts[5]);
+	writeDoc(doc, "i2cIOExpanderPort07", addonOptions.i2cIOExpanderPorts[6]);
+	writeDoc(doc, "i2cIOExpanderPort10", addonOptions.i2cIOExpanderPorts[7]);
+	writeDoc(doc, "i2cIOExpanderPort11", addonOptions.i2cIOExpanderPorts[8]);
+	writeDoc(doc, "i2cIOExpanderPort12", addonOptions.i2cIOExpanderPorts[9]);
+	writeDoc(doc, "i2cIOExpanderPort13", addonOptions.i2cIOExpanderPorts[10]);
+	writeDoc(doc, "i2cIOExpanderPort14", addonOptions.i2cIOExpanderPorts[11]);
+	writeDoc(doc, "i2cIOExpanderPort15", addonOptions.i2cIOExpanderPorts[12]);
+	writeDoc(doc, "i2cIOExpanderPort16", addonOptions.i2cIOExpanderPorts[13]);
+	writeDoc(doc, "i2cIOExpanderPort17", addonOptions.i2cIOExpanderPorts[14]);
+	writeDoc(doc, "i2cIOExpanderPort18", addonOptions.i2cIOExpanderPorts[15]);
 
 	return serialize_json(doc);
 }

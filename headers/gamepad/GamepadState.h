@@ -8,7 +8,7 @@
 #include <stdint.h>
 #include "GamepadEnums.h"
 
-#define GAMEPAD_BUTTON_COUNT 14
+#define GAMEPAD_BUTTON_COUNT 15
 
 /*
 	Gamepad button mapping table:
@@ -38,20 +38,21 @@
 #define GAMEPAD_MASK_LEFT  (1U << 2)
 #define GAMEPAD_MASK_RIGHT (1U << 3)
 
-#define GAMEPAD_MASK_B1    (1U << 0)
-#define GAMEPAD_MASK_B2    (1U << 1)
-#define GAMEPAD_MASK_B3    (1U << 2)
-#define GAMEPAD_MASK_B4    (1U << 3)
-#define GAMEPAD_MASK_L1    (1U << 4)
-#define GAMEPAD_MASK_R1    (1U << 5)
-#define GAMEPAD_MASK_L2    (1U << 6)
-#define GAMEPAD_MASK_R2    (1U << 7)
-#define GAMEPAD_MASK_S1    (1U << 8)
-#define GAMEPAD_MASK_S2    (1U << 9)
-#define GAMEPAD_MASK_L3    (1U << 10)
-#define GAMEPAD_MASK_R3    (1U << 11)
-#define GAMEPAD_MASK_A1    (1U << 12)
-#define GAMEPAD_MASK_A2    (1U << 13)
+#define GAMEPAD_MASK_B1			(1U << 0)
+#define GAMEPAD_MASK_B2			(1U << 1)
+#define GAMEPAD_MASK_B3			(1U << 2)
+#define GAMEPAD_MASK_B4			(1U << 3)
+#define GAMEPAD_MASK_L1			(1U << 4)
+#define GAMEPAD_MASK_R1			(1U << 5)
+#define GAMEPAD_MASK_L2			(1U << 6)
+#define GAMEPAD_MASK_R2			(1U << 7)
+#define GAMEPAD_MASK_S1			(1U << 8)
+#define GAMEPAD_MASK_S2			(1U << 9)
+#define GAMEPAD_MASK_L3			(1U << 10)
+#define GAMEPAD_MASK_R3			(1U << 11)
+#define GAMEPAD_MASK_A1			(1U << 12)
+#define GAMEPAD_MASK_A2			(1U << 13)
+#define GAMEPAD_MASK_KEYCODE	(1U << 14)
 
 // For detecting dpad as buttons
 
@@ -97,6 +98,7 @@ const uint16_t buttonMasks[] =
 	GAMEPAD_MASK_R3,
 	GAMEPAD_MASK_A1,
 	GAMEPAD_MASK_A2,
+	GAMEPAD_MASK_KEYCODE,
 };
 
 struct GamepadState
@@ -142,6 +144,17 @@ inline uint16_t dpadToAnalogY(uint8_t dpad)
 		default:
 			return GAMEPAD_JOYSTICK_MID;
 	}
+}
+
+/**
+ * @brief Get the HID key code from a gamepad mask.
+ *
+ * @param mask
+ * @return uint8_t The HID key code.
+*/
+inline uint8_t getHIDKeyFromGamepadMask(uint16_t mask)
+{
+	return (uint8_t)(mask ^ GAMEPAD_MASK_KEYCODE);
 }
 
 /**

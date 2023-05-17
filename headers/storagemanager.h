@@ -14,6 +14,7 @@
 #include "helper.h"
 #include "gamepad.h"
 
+#include "addons/i2cioexpander.h"
 #include "mbedtls/rsa.h"
 
 #define GAMEPAD_STORAGE_INDEX      		0    // 1024 bytes for gamepad options
@@ -86,6 +87,16 @@ struct BoardOptions
 	ButtonLayoutCustomOptions buttonLayoutCustomOptions;
 	char boardVersion[32]; // 32-char limit to board name
 	uint32_t checksum;
+
+	// I2CIOExpander Addon
+	uint8_t i2cIOExpanderAddress;
+	int i2cIOExpanderBlock;
+	uint8_t i2cIOExpanderINTPin;
+	ExpanderPorts i2cIOExpanderNumPorts;
+	uint32_t i2cIOExpanderPorts[16];
+	uint8_t i2cIOExpanderSCLPin;
+	uint8_t i2cIOExpanderSDAPin;
+	uint32_t i2cIOExpanderSpeed;
 };
 
 struct AddonOptions {
@@ -162,6 +173,16 @@ struct AddonOptions {
 	uint8_t SliderSOCDInputEnabled;
 	uint8_t WiiExtensionAddonEnabled;
 	uint32_t checksum;
+
+	// I2CIOExpander Addon
+	uint8_t i2cIOExpanderAddress;
+	int i2cIOExpanderBlock;
+	uint8_t i2cIOExpanderINTPin;
+	ExpanderPorts i2cIOExpanderNumPorts;
+	uint32_t i2cIOExpanderPorts[16];
+	uint8_t i2cIOExpanderSCLPin;
+	uint8_t i2cIOExpanderSDAPin;
+	uint32_t i2cIOExpanderSpeed;
 };
 
 struct SplashImage {

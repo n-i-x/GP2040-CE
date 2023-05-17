@@ -22,14 +22,15 @@
 #include "addons/extra_button.h"
 #include "addons/i2canalog1219.h"
 #include "addons/i2cdisplay.h"
+#include "addons/i2cioexpander.h"
 #include "addons/jslider.h"
 #include "addons/neopicoleds.h"
 #include "addons/playernum.h"
-#include "addons/ps4mode.h"
 #include "addons/pleds.h"
+#include "addons/ps4mode.h"
 #include "addons/reverse.h"
-#include "addons/turbo.h"
 #include "addons/slider_socd.h"
+#include "addons/turbo.h"
 #include "addons/wiiext.h"
 
 #include "bitmaps.h"
@@ -108,6 +109,31 @@ void Storage::setDefaultBoardOptions()
 	boardOptions.displayFlip       = DISPLAY_FLIP;
 	boardOptions.displayInvert     = DISPLAY_INVERT;
 	boardOptions.displaySaverTimeout     = DISPLAY_SAVER_TIMEOUT;
+
+	// I2CIOExpanderAddon
+	boardOptions.i2cIOExpanderAddress	= I2C_IOEXPANDER_ADDRESS;
+	boardOptions.i2cIOExpanderBlock		= (I2C_IOEXPANDER_BLOCK == i2c0) ? 0 : 1;
+	boardOptions.i2cIOExpanderINTPin	= I2C_IOEXPANDER_INT_PIN;
+	boardOptions.i2cIOExpanderNumPorts	= I2C_IOEXPANDER_PORTS;
+	boardOptions.i2cIOExpanderSCLPin	= I2C_IOEXPANDER_SCL_PIN;
+	boardOptions.i2cIOExpanderSDAPin	= I2C_IOEXPANDER_SDA_PIN;
+	boardOptions.i2cIOExpanderSpeed		= I2C_IOEXPANDER_SPEED;
+	boardOptions.i2cIOExpanderPorts[0]	= I2C_IOEXPANDER_PORT_00; // PCA95xx uses Ports 00-07, 10-17
+	boardOptions.i2cIOExpanderPorts[1]	= I2C_IOEXPANDER_PORT_01;
+	boardOptions.i2cIOExpanderPorts[2]	= I2C_IOEXPANDER_PORT_02;
+	boardOptions.i2cIOExpanderPorts[3]	= I2C_IOEXPANDER_PORT_03;
+	boardOptions.i2cIOExpanderPorts[4]	= I2C_IOEXPANDER_PORT_04;
+	boardOptions.i2cIOExpanderPorts[5]	= I2C_IOEXPANDER_PORT_05;
+	boardOptions.i2cIOExpanderPorts[6]	= I2C_IOEXPANDER_PORT_06;
+	boardOptions.i2cIOExpanderPorts[7]	= I2C_IOEXPANDER_PORT_07;
+	boardOptions.i2cIOExpanderPorts[8]	= I2C_IOEXPANDER_PORT_10;
+	boardOptions.i2cIOExpanderPorts[9]	= I2C_IOEXPANDER_PORT_11;
+	boardOptions.i2cIOExpanderPorts[10]	= I2C_IOEXPANDER_PORT_12;
+	boardOptions.i2cIOExpanderPorts[11]	= I2C_IOEXPANDER_PORT_13;
+	boardOptions.i2cIOExpanderPorts[12]	= I2C_IOEXPANDER_PORT_14;
+	boardOptions.i2cIOExpanderPorts[13]	= I2C_IOEXPANDER_PORT_15;
+	boardOptions.i2cIOExpanderPorts[14]	= I2C_IOEXPANDER_PORT_16;
+	boardOptions.i2cIOExpanderPorts[15]	= I2C_IOEXPANDER_PORT_17;
 
 	ButtonLayoutParams params = {
 		.layout = BUTTON_LAYOUT,
@@ -214,6 +240,32 @@ void Storage::setDefaultAddonOptions()
 	addonOptions.ReverseInputEnabled    = REVERSE_ENABLED;
 	addonOptions.TurboInputEnabled      = TURBO_ENABLED;
 	addonOptions.WiiExtensionAddonEnabled      = WII_EXTENSION_ENABLED;
+
+	// I2CIOExpanderAddon
+	addonOptions.i2cIOExpanderAddress	= I2C_IOEXPANDER_ADDRESS;
+	addonOptions.i2cIOExpanderBlock		= (I2C_IOEXPANDER_BLOCK == i2c0) ? 0 : 1;
+	addonOptions.i2cIOExpanderINTPin	= I2C_IOEXPANDER_INT_PIN;
+	addonOptions.i2cIOExpanderNumPorts	= I2C_IOEXPANDER_PORTS;
+	addonOptions.i2cIOExpanderSCLPin	= I2C_IOEXPANDER_SCL_PIN;
+	addonOptions.i2cIOExpanderSDAPin	= I2C_IOEXPANDER_SDA_PIN;
+	addonOptions.i2cIOExpanderSpeed		= I2C_IOEXPANDER_SPEED;
+	addonOptions.i2cIOExpanderPorts[0]	= I2C_IOEXPANDER_PORT_00; // PCA95xx uses Ports 00-07, 10-17
+	addonOptions.i2cIOExpanderPorts[1]	= I2C_IOEXPANDER_PORT_01;
+	addonOptions.i2cIOExpanderPorts[2]	= I2C_IOEXPANDER_PORT_02;
+	addonOptions.i2cIOExpanderPorts[3]	= I2C_IOEXPANDER_PORT_03;
+	addonOptions.i2cIOExpanderPorts[4]	= I2C_IOEXPANDER_PORT_04;
+	addonOptions.i2cIOExpanderPorts[5]	= I2C_IOEXPANDER_PORT_05;
+	addonOptions.i2cIOExpanderPorts[6]	= I2C_IOEXPANDER_PORT_06;
+	addonOptions.i2cIOExpanderPorts[7]	= I2C_IOEXPANDER_PORT_07;
+	addonOptions.i2cIOExpanderPorts[8]	= I2C_IOEXPANDER_PORT_10;
+	addonOptions.i2cIOExpanderPorts[9]	= I2C_IOEXPANDER_PORT_11;
+	addonOptions.i2cIOExpanderPorts[10]	= I2C_IOEXPANDER_PORT_12;
+	addonOptions.i2cIOExpanderPorts[11]	= I2C_IOEXPANDER_PORT_13;
+	addonOptions.i2cIOExpanderPorts[12]	= I2C_IOEXPANDER_PORT_14;
+	addonOptions.i2cIOExpanderPorts[13]	= I2C_IOEXPANDER_PORT_15;
+	addonOptions.i2cIOExpanderPorts[14]	= I2C_IOEXPANDER_PORT_16;
+	addonOptions.i2cIOExpanderPorts[15]	= I2C_IOEXPANDER_PORT_17;
+
 	setAddonOptions(addonOptions);
 }
 

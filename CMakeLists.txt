@@ -114,15 +114,16 @@ src/addons/buzzerspeaker.cpp
 src/addons/dualdirectional.cpp
 src/addons/extra_button.cpp
 src/addons/i2canalog1219.cpp
-src/addons/jslider.cpp
 src/addons/i2cdisplay.cpp
+src/addons/i2cioexpander.cpp
+src/addons/jslider.cpp
 src/addons/neopicoleds.cpp
-src/addons/playernum.cpp
 src/addons/playerleds.cpp
+src/addons/playernum.cpp
 src/addons/ps4mode.cpp
 src/addons/reverse.cpp
-src/addons/turbo.cpp
 src/addons/slider_socd.cpp
+src/addons/turbo.cpp
 src/addons/wiiext.cpp
 src/gamepad/GamepadDebouncer.cpp
 src/gamepad/GamepadDescriptors.cpp
@@ -134,21 +135,22 @@ pico_set_program_name(GP2040-CE "GP2040-CE")
 pico_set_program_version(GP2040-CE "0.7.1")
 
 target_link_libraries(${PROJECT_NAME}
-pico_stdlib
-pico_bootsel_via_double_reset
+ADS1219
 AnimationStation
+ArduinoJson
 CRC32
 FlashPROM
-ADS1219
-PlayerLEDs
 NeoPico
 OneBitDisplay
-ArduinoJson
-rndis
-hardware_adc
-WiiExtension
-pico_mbedtls
+PlayerLEDs
+PCA95xx
 TinyUSB_Gamepad
+WiiExtension
+hardware_adc
+pico_bootsel_via_double_reset
+pico_mbedtls
+pico_stdlib
+rndis
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
