@@ -1,14 +1,10 @@
 #ifndef _i2cioexpander_H
 #define _i2cioexpander_H
 
+#include "enums.h"
 #include "gpaddon.h"
 
 #include "PCA95xx.h"
-
-enum ExpanderPorts {
-    PORTS_8 = 8,
-    PORTS_16 = 16,
-};
 
 #ifndef I2C_IOEXPANDER_SDA_PIN
 #define I2C_IOEXPANDER_SDA_PIN    -1

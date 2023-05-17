@@ -71,4 +71,9 @@ typedef enum
 	CONFIG_TYPE_DISPLAY
 } ConfigType;
 
+typedef enum  {
+    PORTS_8 = 8,
+    PORTS_16 = 16,
+} ExpanderPorts;
+
 #endif
